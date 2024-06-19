@@ -1,0 +1,38 @@
+<template>
+    <lightning-tabset variant="scoped">
+      <lightning-tab label='Working with payloads'>
+        <lightning-card
+          title="Working with payloads"
+        >
+          <div class="slds-form slds-form_stacked slds-var-m-around_xx-large">
+            <p class="slds-var-m-vertical_large">
+              <strong>Note:</strong> select an account to start
+            </p>
+            <c-lookup
+              data-id="accountLookup"
+              lwc:ref="lookup"
+              unique-id="AccountLookup" 
+              label="Account Search"
+              onchange={handleAccountChange}
+              value={accountValue}
+              required
+            ></c-lookup>
+            <p data-id="selectedAccount" if:true={selectedAccount}>Your account selected was {selectedAccount.name}</p>
+            <c-lookup
+              data-id="contactLookup"
+              lwc:ref="lookup"
+              unique-id="AccountContactLookup"
+              label="Contact Search"
+              value={contactValue}
+              disabled={hasNotAccount}
+              payload={contactPayload}
+              onchange={handleContactChange}
+              required
+            ></c-lookup>
+            <p data-id="selectedContact" if:true={selectedContact}>Your contact selected was {selectedContact.name} and its phone number is  {selectedContact.phone}</p>
+          </div>
+        </lightning-card>
+      </lightning-tab>
+    </lightning-tabset>
+  </template>
+  
