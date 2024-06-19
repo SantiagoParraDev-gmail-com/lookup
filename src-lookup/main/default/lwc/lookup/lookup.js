@@ -140,7 +140,10 @@ export default class SobjectLookup extends LightningElement {
       new CustomEvent("change", {
         detail: {
           value,
-          payload: this._value.map(({ id, payload }) => ({ id, payload }))
+          payload: this._value.reduce((map, { id, recordPayload }) => {
+            map[id] = recordPayload;
+            return map; 
+          }, {})
         }
       })
     );
