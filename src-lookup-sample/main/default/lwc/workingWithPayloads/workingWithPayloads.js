@@ -1,7 +1,7 @@
 import { LightningElement, track } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 
-export default class WorkingWithPayloads extends NavigationMixin( LightningElement ) {
+export default class WorkingWithPayloads extends NavigationMixin(LightningElement) {
 
   @track contactPayload;
   accountValue;
@@ -15,7 +15,7 @@ export default class WorkingWithPayloads extends NavigationMixin( LightningEleme
     this.selectedAccount = undefined;
     this.selectedContact = undefined;
     this.accountValue = event.detail.value[0];
-    this.contactPayload = { accountId : event.detail.value[0] };
+    this.contactPayload = { accountId: event.detail.value[0] };
     this.selectedAccount = event.detail.payload[this.accountValue];
   }
 

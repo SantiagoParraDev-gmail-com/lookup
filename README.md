@@ -63,7 +63,7 @@ The lookup component provides the following features:
 
 2. **Create the `LookupDefinition` record**
    
-   Go to Setup > Custom Metadata Types > LookupDefinition > add a new record
+   Go to Setup > Custom Metadata Types > click in  Manage Records (LookupDefinition) > add a new record
 
    **Label**: `String`<br/>
    **ApiName**: `String`<br/>
@@ -143,6 +143,7 @@ public List<LookupResult> getDefaultSearchResults(Map<String, Object> payload) {
     return result;
 }
 ```
+**RECOMMENDED**: `selectedIds` *is the Id selected, use in `getSelection()` method and `getSearchResults()` method*
 
 ## Work with contexts using `payload`
 
@@ -170,7 +171,8 @@ singleLookupResult.recordPayload = new Map<String, Object> {
 ```js
 handleChange(event) {
     const value = event.detail.value;// ["someId", "someId2", "someId3"]
-    const payload = event.detail.payload;// {"someId": {type: nurse, name : johana}, someId2: {ty...}}
+    const payload = { someId : event.detail.value };// {"someId": {type: nurse, name : johana}, someId2: {ty...}}
+    //this create a copy of the payload of the id consulted
     // TODO: do something with the selection
 }
 ```
